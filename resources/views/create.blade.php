@@ -5,9 +5,16 @@
     <div class="card-header">新規メモ作成</div>
     <form class="card-body" action="{{ route('store') }}" method="POST">
         @csrf
-        <div class="form-group">
+        <div class="form-group mb-3">
             <textarea class="form-control" name="content" rows="3" placeholder="ここにメモを入力"></textarea>
         </div>
+        @foreach ($tags as $tag)
+            <div class="form-check form-check-inline mb-3">
+                <input type="checkbox" class="form-check-input" name="tags[]" id="{{ $tag['id'] }}" value="{{ $tag['id'] }}">
+                <label for="{{ $tag['id'] }}" class="form-check-label">{{ $tag['name'] }}</label>
+            </div>
+        @endforeach
+        <input class="form-control w-50" type="text" name="new_tag" placeholder="新しいタグを入力">
         <button type="submit" class="btn btn-primary mt-3">保存</button>
     </form>
 </div>
