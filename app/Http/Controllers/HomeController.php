@@ -39,10 +39,17 @@ class HomeController extends Controller
     {
         $posts = $request->all();
 
-        $request->validate(['content' => 'required']);
+        $request->validate([
+            'content' => 'required',
+            'title' => 'required',
+        ]);
 
         DB::transaction(function() use($posts) {
-            $memo_id = Memo::insertGetId(['content' => $posts['content'], 'user_id' => \Auth::id()]);
+            $memo_id = Memo::insertGetId([
+                'content' => $posts['content'],
+                'user_id' => \Auth::id(),
+                'title' => $posts['title']
+            ]);
             $tag_exists = Tag::where('user_id', '=', \Auth::id())
                 ->where('name', '=', $posts['new_tag'])
                 ->exists();

@@ -5,6 +5,10 @@
     <div class="card-header">新規メモ作成</div>
     <form class="card-body my-card-body" action="{{ route('store') }}" method="POST">
         @csrf
+        <div class="mb-3">
+            <label for="title" class="form-label">メモタイトル</label>
+            <input type="text" class="form-control" id="title" placeholder="タイトルを入力" name="title">
+        </div>
         <div class="form-group mb-3">
             <textarea class="form-control" name="content" rows="3" placeholder="ここにメモを入力"></textarea>
         </div>
