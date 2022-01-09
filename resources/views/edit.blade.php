@@ -18,7 +18,7 @@
         @csrf
         <input type="hidden" name="memo_id" value="{{ $edit_memo[0]['id'] }}">
         <div class="mb-3">
-            <label for="title" class="form-label">Email address</label>
+            <label for="title" class="form-label">メモタイトル</label>
             <input type="text" class="form-control" id="title" placeholder="タイトルを入力" value="{{ $edit_memo[0]['title'] }}">
         </div>
         <div class="form-group mb-3">
