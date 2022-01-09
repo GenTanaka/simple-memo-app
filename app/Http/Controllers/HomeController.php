@@ -96,10 +96,17 @@ class HomeController extends Controller
     {
         $posts = $request->all();
 
-        $request->validate(['content' => 'required']);
+        $request->validate([
+            'content' => 'required',
+            'title' => 'required'
+        ]);
 
         DB::transaction(function() use($posts) {
-            Memo::where('id', $posts['memo_id'])->update(['content' => $posts['content']]);
+            Memo::where('id', $posts['memo_id'])
+                ->update([
+                    'content' => $posts['content'],
+                    'title' => $posts['title']
+                ]);
 
             MemoTag::where('memo_id', '=', $posts['memo_id'])->delete();
 
