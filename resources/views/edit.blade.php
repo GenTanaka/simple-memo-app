@@ -21,6 +21,9 @@
             <label for="title" class="form-label">メモタイトル</label>
             <input type="text" class="form-control" id="title" placeholder="タイトルを入力" name="title" value="{{ $edit_memo[0]['title'] }}">
         </div>
+        @error('title')
+        <div class="alert alert-danger">メモのタイトルを入力してください</div>
+        @enderror
         <div class="form-group mb-3">
             <textarea class="form-control" name="content" rows="3" placeholder="ここにメモを入力">{{ $edit_memo[0]['content'] }}</textarea>
         </div>
